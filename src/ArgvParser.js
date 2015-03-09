@@ -122,7 +122,7 @@ ArgvParser.prototype.validate = function(parsed) {
 		if(!cases.length)
 			throw new Error('Option -' + opt + ' is not allowed here');
 	}
-console.log(cases);
+
 	for(var i = 0; i < cases.length; i++) {
 		if(!caseHasRequiredOptions(cases[i]))
 			return; // нашли подходящий кейс
