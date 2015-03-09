@@ -1,4 +1,4 @@
-# node-getoptie
+# node-getoptie [![Build Status](https://travis-ci.org/avz/node-getoptie.svg?branch=master)](https://travis-ci.org/avz/node-getoptie)
 
 ## Installation
 
