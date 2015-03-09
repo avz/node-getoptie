@@ -29,7 +29,8 @@ ArgvParser.prototype.parse = function(argv, offset) {
 	var options = {};
 
 	var addOption = function(id, value) {
-		var info = self.parsedOptstring[id];
+		var info = self.parsedOptstring.options[id];
+
 		if(info.isMulti) {
 			if(!options[id])
 				options[id] = [];
