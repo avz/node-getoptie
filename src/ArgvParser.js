@@ -46,7 +46,13 @@ ArgvParser.prototype.parse = function(argv, offset) {
 
 	while(argv.length) {
 		var opt = argv[0];
-		if(opt[0] !== '-' || opt === '--')
+
+		if(opt === '--') {
+			argv.shift();
+			break;
+		}
+
+		if(opt[0] !== '-')
 			break;
 
 		if(opt === '-')
