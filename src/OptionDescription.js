@@ -6,6 +6,7 @@ function OptionDescription(id) {
 	this.id = id;
 	this.isOptional = false;
 	this.argumentRequired = false;
+	this.isMulti = false;
 };
 
 module.exports = OptionDescription;
@@ -23,5 +24,6 @@ OptionDescription.prototype.isEqual = function(optionInfo) {
 		this.id === optionInfo.id
 		&& this.isOptional === optionInfo.isOptional
 		&& this.argumentRequired === optionInfo.argumentRequired
+		&& this.isMulti === optionInfo.isMulti
 	;
 };

@@ -22,10 +22,26 @@ module.exports = ArgvParser;
  * @returns {ParsedArgv}
  */
 ArgvParser.prototype.parse = function(argv, offset) {
+	var self = this;
 	var parsed = new ParsedArgv;
 
 	argv = argv.slice(offset);
 	var options = {};
+
+	var addOption = function(id, value) {
+		var info = self.parsedOptstring[id];
+		if(info.isMulti) {
+			if(!options[id])
+				options[id] = [];
+
+			options[id].push(value);
+		} else {
+			if(options[id] !== undefined)
+				throw new Error('Multiple occurience of -' + id);
+
+			options[id] = value;
+		}
+	};
 
 	while(argv.length) {
 		var opt = argv[0];
@@ -56,9 +72,9 @@ ArgvParser.prototype.parse = function(argv, offset) {
 				optarg = argv.shift();
 			}
 
-			options[optid] = optarg;
+			addOption(optid, optarg);
 		} else {
-			options[optid] = true;
+			addOption(optid, true);
 
 			if(opt.length > 1) {
 				argv.unshift('-' + opt.substr(1));
