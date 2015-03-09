@@ -117,10 +117,16 @@ OptstringParser.unfold = function(optstring) {
 					isOptional = false;
 				break;
 				case ':':
-					if(!opt)
+					if(!opt || opt.argumentRequired)
 						throw new Error('Unexpected `:`, must be after option name');
 
 					opt.argumentRequired = true;
+				break;
+				case '*':
+					if(!opt || opt.isMulti)
+						throw new Error('Unexpected `*`, must be after option definition');
+
+					opt.isMulti = true;
 					endPrevOpt();
 				break;
 				default:
