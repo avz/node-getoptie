@@ -20,10 +20,12 @@ OptionDescription.prototype.isEqual = function(optionInfo) {
 	if(optionInfo === this)
 		return true;
 
-	return
+	var isEqual =
 		this.id === optionInfo.id
 		&& this.isOptional === optionInfo.isOptional
 		&& this.argumentRequired === optionInfo.argumentRequired
 		&& this.isMulti === optionInfo.isMulti
 	;
+
+	return isEqual;
 };
